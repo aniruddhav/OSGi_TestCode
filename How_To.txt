@@ -1,0 +1,34 @@
+1. Build attached maven projects. ( mvn clean install )
+   This will install "server" and "client" modules in local maven repos.
+
+2. Download Karaf. Execute {KARAF_DIR}/bin/karaf
+   This will start the Karaf runtime.
+
+3. On karaf prompt -
+# install the server bundle
+> bundle:install mvn:com.anv/OSGiServer/0.0.1-SNAPSHOT
+Bundle ID: 54
+
+# install the client bundle
+> bundle:install mvn:com.anv/OSGiClient/0.0.1-SNAPSHOT
+Bundle ID: 55
+
+#start the client bundle
+> bundle:start 55
+Client : Start.
+
+# Start the server bundle
+> bundle:start 54
+Registering service.
+Service Changed.
+Notification of service registered.
+Hello John
+
+# Stop the server bundle.
+> bundle:stop 54
+Unregistering service.
+Service Changed.
+Notification of service unregistered.
+
+> Stop the client bundle
+Client : Stop.

@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.anv</groupId>
+	<artifactId>OSGiServer</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>bundle</packaging>
+	
+	<name>FirstOSGiBundle</name>
+	<description>aaa</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>6.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>3.3.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>
+							${pom.groupId}.${pom.artifactId}
+						</Bundle-SymbolicName>
+						
+						<Bundle-Name>${pom.name}</Bundle-Name>
+						<Bundle-Version>${pom.version}</Bundle-Version>
+						
+						<Bundle-Activator>
+							osgitest.service.implementation.GreeterImpl
+						</Bundle-Activator>
+						<Private-Package>
+							osgitest.service.implementation
+						</Private-Package>
+						<Export-Package>
+							osgitest.service.definition
+						</Export-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
